@@ -1,5 +1,6 @@
 import streamlit as st
 import plotly.express as px
+from backend import get_data
 
 st.title("Weather Forecast App: Get the Weather for the Next Few Days")
 place = st.text_input("Location: ")
@@ -10,6 +11,8 @@ option = st.selectbox("Select data to view",
 st.subheader(f"{option} for the next {days} days in {place}")
 
 # function for getting data
+data = get_data(place, days, option)
+"""
 def get_data(days):
     # create plotly figure first & date/temperature list
     dates = ["2022-25-10", "2022-26-10", "2022-27-10"]
@@ -17,7 +20,7 @@ def get_data(days):
     # this makes y-axis dynamically change pending on when days change
     temperatures = [days * i for i in temperatures]
     return dates, temperatures
-
+"""
 
 d, t = get_data(days)
 
